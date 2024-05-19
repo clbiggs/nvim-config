@@ -46,9 +46,18 @@ return {
       files = {"src/parser.c"}
     },
     filetype = "gotmpl",
-    used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl", "yaml"},
+    used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl"},
   }
 
   vim.treesitter.language.register("templ", "templ")
+
+  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = { "*.tpl", "*.tmpl" },
+    command = "setlocal filetype=gotmpl",
+  })
+  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+    pattern = { "*.yaml", "*.yaml.tmpl" },
+    command = "if search('{{.\\+}}', 'nw') | setlocal filetype=gotmpl | endif",
+  })
   end
 }
