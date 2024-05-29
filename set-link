@@ -2,3 +2,14 @@
 
 rm -rf ~/.config/nvim
 ln -s $(pwd) ~/.config/nvim
+
+read -p "Set neovim as default editor? Y or N" -n 1 -r
+echo    # (optional) move to a new line
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+cat << \EOF >> ~/.bashrc
+# Set neovim as default editor
+export EDITOR='nvim'
+export VISUAL='nvim'
+EOF
+fi
