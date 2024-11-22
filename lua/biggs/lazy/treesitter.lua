@@ -32,32 +32,43 @@ return {
       },
   })
 
-  local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-  treesitter_parser_config.templ = {
-      install_info = {
-          url = "https://github.com/vrischmann/tree-sitter-templ.git",
-          files = {"src/parser.c", "src/scanner.c"},
-          branch = "master",
-      },
-  }
-  treesitter_parser_config.gotmpl = {
-    install_info = {
-      url = "https://github.com/ngalaiko/tree-sitter-go-template",
-      files = {"src/parser.c"}
+  vim.filetype.add({
+    extension = {
+      gotmpl = 'gotmpl',
     },
-    filetype = "gotmpl",
-    used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl"},
-  }
-
-  vim.treesitter.language.register("templ", "templ")
-
-  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = { "*.tpl", "*.tmpl" },
-    command = "setlocal filetype=gotmpl",
+    pattern = {
+      [".*/templates/.*%.tpl"] = "helm",
+      [".*/templates/.*%.ya?ml"] = "helm",
+      ["helmfile.*%.ya?ml"] = "helm",
+    },
   })
-  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
-    pattern = { "*.yaml", "*.yaml.tmpl" },
-    command = "if search('{{.\\+}}', 'nw') | setlocal filetype=gotmpl | endif",
-  })
+
+--  local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+--  treesitter_parser_config.templ = {
+--      install_info = {
+--          url = "https://github.com/vrischmann/tree-sitter-templ.git",
+--          files = {"src/parser.c", "src/scanner.c"},
+--          branch = "master",
+--      },
+--  }
+--  treesitter_parser_config.gotmpl = {
+--    install_info = {
+--      url = "https://github.com/ngalaiko/tree-sitter-go-template",
+--      files = {"src/parser.c"}
+--    },
+--    filetype = "gotmpl",
+--    used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl"},
+--  }
+--
+--  vim.treesitter.language.register("templ", "templ")
+--
+--  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+--    pattern = { "*.tpl", "*.tmpl" },
+--    command = "setlocal filetype=gotmpl",
+--  })
+--  vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+--    pattern = { "*.yaml", "*.yaml.tmpl" },
+--    command = "if search('{{.\\+}}', 'nw') | setlocal filetype=gotmpl | endif",
+--  })
   end
 }
