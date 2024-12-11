@@ -4,11 +4,25 @@ return {
     tag = "0.1.5",
 
     dependencies = {
-        "nvim-lua/plenary.nvim"
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope-smart-history.nvim"
     },
 
     config = function()
-        require('telescope').setup({})
+        local telescope = require('telescope')
+
+        telescope.setup(
+            {
+                defaults = {
+                    history = {
+                      path = vim.fn.stdpath("data") .. "/telescope_history.sqlite3",
+                      limit = 100,
+                    }
+                }
+            }
+        )
+
+        telescope.load_extension('smart_history')
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
@@ -25,5 +39,6 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
         vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+
     end
 }
