@@ -29,6 +29,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "gopls",
+                "docker_compose_language_service",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -52,6 +53,13 @@ return {
                     }
                 end,
             }
+        })
+
+        vim.filetype.add({
+          pattern = {
+            ["compose.*%.ya?ml"] = "yaml.docker-compose",
+            ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+          },
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
