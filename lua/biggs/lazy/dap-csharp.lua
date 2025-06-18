@@ -4,7 +4,7 @@ return {
     config = function ()
         require('dap-cs').setup({
             netcoredbg = {
-                path = "~/.local/bin/netcoredbg/netcoredbg"
+                path = "/home/chris/.local/bin/netcoredbg/netcoredbg"
             }
         })
     end

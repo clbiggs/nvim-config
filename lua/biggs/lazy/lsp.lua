@@ -52,7 +52,8 @@ return {
                         }
                     }
                 end,
-            }
+            },
+            automatic_enable = true
         })
 
         vim.filetype.add({
@@ -110,7 +111,7 @@ return {
                 focusable = false,
                 style = "minimal",
                 border = "rounded",
-                source = "always",
+                source = true,
                 header = "",
                 prefix = "",
             },
