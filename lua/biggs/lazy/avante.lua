@@ -1,13 +1,14 @@
 return {
     "yetone/avante.nvim",
     event = "VeryLazy",
+    version = false,
     --- other configuration items ...
     opts = {
-        --- other configuration items ...
+        provider = "openai",
         providers = {
             openai = {
                 endpoint = "https://api.openai.com/v1",
-                model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+                model = "o4-mini", -- your desired model (or use gpt-4o, etc.)
                 timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
                 extra_request_body = {
                     temperature = 0,
