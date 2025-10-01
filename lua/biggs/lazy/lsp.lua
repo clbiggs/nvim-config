@@ -52,15 +52,24 @@ return {
                         }
                     }
                 end,
+                ["powershell_es"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.powershell_es.setup {
+                        init_options = {
+                            enableProfileLoading = false
+                        },
+                        settings = { powershell = { codeFormatting = { Preset = 'OTBS' } } },
+                    }
+                end,
             },
             automatic_enable = true
         })
 
         vim.filetype.add({
-          pattern = {
-            ["compose.*%.ya?ml"] = "yaml.docker-compose",
-            ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
-          },
+            pattern = {
+                ["compose.*%.ya?ml"] = "yaml.docker-compose",
+                ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+            },
         })
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
@@ -78,24 +87,24 @@ return {
                 ['<C-y>'] = cmp.mapping.confirm({ select = true }),
                 ['<C-e>'] = cmp.mapping.abort(),
                 ["<C-Space>"] = cmp.mapping.complete(),
---                ["<Tab>"] = cmp.mapping(function(fallback)
---                    if cmp.visible() then
---                        cmp.select_next_item()
---                    elseif luasnip.expand_or_jumpable() then
---                        luasnip.expand_or_jump()
---                    else
---                        fallback()
---                    end
---                end, { 'i', 's' }),
---                ["<S-Tab>"] = cmp.mapping(function(fallback)
---                    if cmp.visible() then
---                        cmp.select_prev_item()
---                    elseif luasnip.jumpable(-1) then
---                        luasnip.jump(-1)
---                    else
---                        fallback()
---                    end
---                end, { 'i', 's' }),
+                --                ["<Tab>"] = cmp.mapping(function(fallback)
+                --                    if cmp.visible() then
+                --                        cmp.select_next_item()
+                --                    elseif luasnip.expand_or_jumpable() then
+                --                        luasnip.expand_or_jump()
+                --                    else
+                --                        fallback()
+                --                    end
+                --                end, { 'i', 's' }),
+                --                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                --                    if cmp.visible() then
+                --                        cmp.select_prev_item()
+                --                    elseif luasnip.jumpable(-1) then
+                --                        luasnip.jump(-1)
+                --                    else
+                --                        fallback()
+                --                    end
+                --                end, { 'i', 's' }),
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
