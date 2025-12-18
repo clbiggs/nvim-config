@@ -4,9 +4,10 @@ return {
     version = false,
     --- other configuration items ...
     opts = {
-        provider = "openai",
+        provider = "openrouter",
         providers = {
-            openai = {
+            biggs_openai = {
+                __inherited_from = 'openai',
                 endpoint = "https://api.openai.com/v1",
                 model = "gpt-5", -- your desired model (or use gpt-4o, etc.)
                 timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
@@ -15,6 +16,12 @@ return {
                     max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
                     reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
                 },
+            },
+            openrouter = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'google/gemini-3-flash-preview',
             },
         },
     },
