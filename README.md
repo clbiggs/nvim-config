@@ -1,5 +1,5 @@
 ## nvim-config
-Prerequisite:
+### Prerequisites:
 - install [ripgrep](https://github.com/BurntSushi/ripgrep).
 - install fd-find
 - install treesitter cli `$ npm install -g tree-sitter-cli`
@@ -13,3 +13,9 @@ wget https://github.com/Samsung/netcoredbg/releases/download/3.1.0-1031/netcored
 tar -xvf netcoredbg-linux-amd64.tar.gz -C ~/.local/bin/
 ```
 https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap
+
+### Avante's Zen Mode
+This launches nvim in a vibe coding agent CLI style.
+``` bash
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+```
