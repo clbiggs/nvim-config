@@ -4,7 +4,7 @@ return {
     version = false,
     --- other configuration items ...
     opts = {
-        provider = "openrouter",
+        provider = "openrouter_gemini_3_flash",
         providers = {
             biggs_openai = {
                 __inherited_from = 'openai',
@@ -17,11 +17,17 @@ return {
                     reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
                 },
             },
-            openrouter = {
+            openrouter_gemini_3_flash = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
                 model = 'google/gemini-3-flash-preview',
+            },
+            openrouter_opus_4_6 = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'anthropic/claude-opus-4.6',
             },
         },
     },
