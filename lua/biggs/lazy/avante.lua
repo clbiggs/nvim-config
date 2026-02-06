@@ -29,6 +29,12 @@ return {
                 api_key_name = 'OPENROUTER_API_KEY',
                 model = 'anthropic/claude-opus-4.6',
             },
+            openrouter_gpt_5_2_codex = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'openai/gpt-5.2-codex',
+            },
         },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
