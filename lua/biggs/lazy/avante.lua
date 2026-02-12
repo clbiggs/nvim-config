@@ -23,17 +23,69 @@ return {
                 api_key_name = 'OPENROUTER_API_KEY',
                 model = 'google/gemini-3-flash-preview',
             },
+            openrouter_gemini_3_flash_reasoning = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'google/gemini-3-flash-preview',
+                timeout = 60000,
+                extra_request_body = {
+                    resoning_effort = "medium",
+                }
+            },
             openrouter_opus_4_6 = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
                 model = 'anthropic/claude-opus-4.6',
             },
+            openrouter_opus_4_6_reasoning = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'anthropic/claude-opus-4.6',
+                timeout = 60000,
+                extra_request_body = {
+                    resoning_effort = "medium",
+                }
+            },
             openrouter_gpt_5_2_codex = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
                 model = 'openai/gpt-5.2-codex',
+            },
+            openrouter_kimi_k2_5 = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'moonshotai/kimi-k2.5',
+            },
+            openrouter_kimi_k2_5_reasoning = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'moonshotai/kimi-k2.5',
+                timeout = 60000,
+                extra_request_body = {
+                    resoning_effort = "medium",
+                }
+            },
+            openrouter_glm_5 = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'z-ai/glm-5',
+            },
+            openrouter_glm_5_reasoning = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'z-ai/glm-5',
+                timeout = 60000,
+                extra_request_body = {
+                    resoning_effort = "medium",
+                }
             },
         },
     },
