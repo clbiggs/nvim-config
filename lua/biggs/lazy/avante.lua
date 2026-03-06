@@ -4,7 +4,7 @@ return {
     version = false,
     --- other configuration items ...
     opts = {
-        provider = "openrouter_gemini_3_flash",
+        provider = "openrouter_gpt_5_4_medium",
         providers = {
             biggs_openai = {
                 __inherited_from = 'openai',
@@ -21,13 +21,13 @@ return {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
-                model = 'google/gemini-3-flash-preview',
+                model = 'google/gemini-3.1-flash-preview',
             },
             openrouter_gemini_3_flash_reasoning = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
-                model = 'google/gemini-3-flash-preview',
+                model = 'google/gemini-3.1-flash-preview',
                 timeout = 60000,
                 extra_request_body = {
                     resoning_effort = "medium",
@@ -49,11 +49,29 @@ return {
                     resoning_effort = "medium",
                 }
             },
-            openrouter_gpt_5_2_codex = {
+            openrouter_gpt_5_4_medium = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
                 api_key_name = 'OPENROUTER_API_KEY',
-                model = 'openai/gpt-5.2-codex',
+                model = 'openai/gpt-5.4',
+                timeout = 30000,
+                extra_request_body = {
+                    temperature = 1,
+                    max_completion_tokens = 8192,
+                    reasoning_effort = "medium",
+                },
+            },
+            openrouter_gpt_5_4_high = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'openai/gpt-5.4',
+                timeout = 30000,
+                extra_request_body = {
+                    temperature = 1,
+                    max_completion_tokens = 8192,
+                    reasoning_effort = "high",
+                },
             },
             openrouter_kimi_k2_5 = {
                 __inherited_from = 'openai',
