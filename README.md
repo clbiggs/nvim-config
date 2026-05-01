@@ -14,6 +14,15 @@ tar -xvf netcoredbg-linux-amd64.tar.gz -C ~/.local/bin/
 ```
 https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap
 
+### Avante build requirements
+Avante repo tags are messed up, so a source build may be required.
+Install the following:
+- cargo
+- rustup
+
+Then update rust to latest:
+`rustup update stable`
+
 ### Avante's Zen Mode
 This launches nvim in a vibe coding agent CLI style.
 ``` bash
