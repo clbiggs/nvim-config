@@ -11,6 +11,41 @@ return {
         local t = require('neo-tree')
         vim.keymap.set({"v","n","i"}, "<C-b>", '<Cmd>Neotree toggle<CR>')
         t.setup({
+            source_selector = {
+                truncation_character = "…",
+            -- statusline = true,
+            	winbar = true,
+            	sources = {
+                    {
+                      source = "filesystem",
+                      display_name = " 󰉓 Files "
+                    },
+                    {
+                      source = "buffers",
+                      display_name = " 󰈚 Buffers "
+                    },
+                    {
+                      source = "git_status",
+                      display_name = " 󰊢 Git "
+                    },
+                    {
+                      source = "document_symbols",
+                      display_name = "  Code "
+                    },
+            	},
+            	content_layout = "center",
+            	highlight_tab = "NeoTreeTabInactive", -- string
+            	highlight_tab_active = "NeoTreeTabActive", -- string
+            	highlight_background = "NeoTreeTabInactive", -- string
+            	highlight_separator = "ActiveWindow", -- string
+            	highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
+            },
+            sources = {
+                "filesystem",
+                "buffers",
+                "git_status",
+                "document_symbols",
+            },
             filesystem = {
                 commands = {
                     avante_add_files = function(state)
