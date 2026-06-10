@@ -1,6 +1,6 @@
 return {
---    "yetone/avante.nvim",
-    "RobsonMobarack/avante.nvim",
+    "yetone/avante.nvim",
+--    "RobsonMobarack/avante.nvim",
     event = "VeryLazy",
     -- version = false,
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

@@ -14,6 +14,22 @@ tar -xvf netcoredbg-linux-amd64.tar.gz -C ~/.local/bin/
 ```
 https://aaronbos.dev/posts/debugging-csharp-neovim-nvim-dap
 
+### Nerd Font is recommended
+
+`curl -fsSL https://raw.githubusercontent.com/getnf/getnf/main/install.sh | bash`
+`CascadiaCode` is recommended
+
+### Set NPM global directory
+
+``` bash
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+
+echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+
 ### Avante build requirements
 Avante repo tags are messed up, so a source build may be required.
 Install the following:
