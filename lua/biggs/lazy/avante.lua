@@ -1,10 +1,15 @@
 return {
-    "yetone/avante.nvim",
+--    "yetone/avante.nvim",
+    "RobsonMobarack/avante.nvim",
     event = "VeryLazy",
-    version = false,
+    -- version = false,
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
+    -- build = "make BUILD_FROM_SOURCE=true",
+    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     --- other configuration items ...
     opts = {
-        provider = "openrouter_gpt_5_4_medium",
+        provider = "openrouter_gpt_5_5_medium",
         providers = {
             biggs_openai = {
                 __inherited_from = 'openai',
@@ -16,22 +21,6 @@ return {
                     max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
                     reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
                 },
-            },
-            openrouter_gemini_3_flash = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'google/gemini-3.1-flash-preview',
-            },
-            openrouter_gemini_3_flash_reasoning = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'google/gemini-3.1-flash-preview',
-                timeout = 60000,
-                extra_request_body = {
-                    resoning_effort = "medium",
-                }
             },
             openrouter_opus_4_6 = {
                 __inherited_from = 'openai',
@@ -61,6 +50,18 @@ return {
                     reasoning_effort = "medium",
                 },
             },
+            openrouter_gpt_5_5_medium = {
+                __inherited_from = 'openai',
+                endpoint = 'https://openrouter.ai/api/v1',
+                api_key_name = 'OPENROUTER_API_KEY',
+                model = 'openai/gpt-5.5',
+                timeout = 60000,
+                extra_request_body = {
+                    temperature = 0.3,
+                    max_completion_tokens = 8192,
+                    reasoning_effort = "medium",
+                },
+            },
             openrouter_gpt_5_4_high = {
                 __inherited_from = 'openai',
                 endpoint = 'https://openrouter.ai/api/v1',
@@ -73,43 +74,8 @@ return {
                     reasoning_effort = "high",
                 },
             },
-            openrouter_kimi_k2_5 = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'moonshotai/kimi-k2.5',
-            },
-            openrouter_kimi_k2_5_reasoning = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'moonshotai/kimi-k2.5',
-                timeout = 60000,
-                extra_request_body = {
-                    resoning_effort = "medium",
-                }
-            },
-            openrouter_glm_5 = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'z-ai/glm-5',
-            },
-            openrouter_glm_5_reasoning = {
-                __inherited_from = 'openai',
-                endpoint = 'https://openrouter.ai/api/v1',
-                api_key_name = 'OPENROUTER_API_KEY',
-                model = 'z-ai/glm-5',
-                timeout = 60000,
-                extra_request_body = {
-                    resoning_effort = "medium",
-                }
-            },
         },
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make BUILD_FROM_SOURCE=true",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
         "stevearc/dressing.nvim",
