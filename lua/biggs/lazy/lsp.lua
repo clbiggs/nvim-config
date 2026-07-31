@@ -30,6 +30,7 @@ return {
                 "rust_analyzer",
                 "gopls",
                 "docker_compose_language_service",
+                "jsonls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
