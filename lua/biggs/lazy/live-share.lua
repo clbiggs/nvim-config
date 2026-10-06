@@ -11,8 +11,8 @@ return {
   dependencies = { "vhyrro/luarocks.nvim" },
   config = function()
     require("live-share").setup({
-      transport = "punch",
-      service   = "bore",   -- or "ngrok", "serveo.net", "nokey@localhost.run"
+   --   transport = "punch",
+      service   = "nokey@localhost.run", -- built-in SSH tunnel; no account required
       username  = "chris.biggs",
     })
   end,
